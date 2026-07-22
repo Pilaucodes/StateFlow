@@ -1,4 +1,4 @@
-unction Assistant() {
+function Assistant() {
   return (
     <div>
       <h1>AI Development Assistant</h1>
