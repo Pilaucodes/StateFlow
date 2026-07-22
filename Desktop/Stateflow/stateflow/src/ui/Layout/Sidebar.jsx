@@ -11,54 +11,45 @@ import {
 function Sidebar() {
   return (
     <aside className="sidebar">
-      <div className="logo">
-        <h2>StateFlow</h2>
-      </div>
+      <h2>StateFlow</h2>
 
       <nav>
         <ul>
-
- <NavLink to="/">
-  <li>
-    <FaHome />
-    <span>Dashboard</span>
-  </li>
-</NavLink>
-
- <NavLink to="/tasks">
           <li>
-            <FaTasks />
-            <span>Tasks</span>
+            <NavLink to="/">
+              <FaHome /> Dashboard
+            </NavLink>
           </li>
- </NavLink>
 
-  <NavLink to="/kanban">
           <li>
-            <FaColumns />
-            <span>Kanban</span>
+            <NavLink to="/tasks">
+              <FaTasks /> Tasks
+            </NavLink>
           </li>
- </NavLink>
 
-  <NavLink to="/focus">
           <li>
-            <FaClock />
-            <span>Focus Sessions</span>
+            <NavLink to="/kanban">
+              <FaColumns /> Kanban
+            </NavLink>
           </li>
- </NavLink>
 
-  <NavLink to="/assistant">
           <li>
-            <FaRobot />
-            <span>AI Assistant</span>
+            <NavLink to="/focus">
+              <FaClock /> Focus Sessions
+            </NavLink>
           </li>
- </NavLink>
 
-  <NavLink to="/">
           <li>
-            <FaCog />
-            <span>Settings</span>
+            <NavLink to="/assistant">
+              <FaRobot /> AI Assistant
+            </NavLink>
           </li>
-    </NavLink>
+
+          <li>
+            <NavLink to="/settings">
+              <FaCog /> Settings
+            </NavLink>
+          </li>
         </ul>
       </nav>
     </aside>
