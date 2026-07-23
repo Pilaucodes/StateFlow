@@ -1,0 +1,33 @@
+/* main dashboard */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* grid layout for statistic cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* individual statistic card */
+.stat-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* stat value */
+.stat-card h3 {
+  font-size: 2rem;
+  color: #2563EB;
+}
+
+/* stat title */
+.stat-card p {
+  margin-top: 10px;
+  color: #666;
+}
