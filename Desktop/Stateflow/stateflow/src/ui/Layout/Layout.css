@@ -6,14 +6,15 @@
 
 .sidebar {
   width: 240px;
-  background: #E9D5D5;
-  border-right: 1px solid #DDBBBB;
+  background: #FBE8DA;
+  border-right: 1px solid #EFCDBA;
   padding: 25px;
 }
 
 .sidebar h2 {
-  color: #2563eb;
+  color: #8C5A3C;
   margin-bottom: 30px;
+  font-weight: 700;
 }
 
 .sidebar ul {
@@ -26,10 +27,23 @@
 
 .sidebar a {
   text-decoration: none;
-  color: #333;
+  color: #5A4638;
   display: flex;
-  gap: 10px;
   align-items: center;
+  gap: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.sidebar a:hover {
+  background: #F6DDCB;
+}
+
+.sidebar a.active {
+  background: #EFC7AE;
+  color: #8C5A3C;
+  font-weight: 600;
 }
 
 .main-content {
