@@ -37,7 +37,7 @@ function Dashboard() {
 
       </div>
 
- // Chart sectioon 
+      {/* Chart sectioon */}
       <div className="dashboard-charts">
 
         <div className="chart-card">
@@ -57,10 +57,10 @@ function Dashboard() {
 
       </div>
 
-      //lower dash-area
+      {/* lower dashboard area */}
       <div className="dashboard-bottom">
 
-        // recent tasks
+        {/* recent tasks */}
 
         <div className="recent-tasks">
 
@@ -74,7 +74,7 @@ function Dashboard() {
 
         </div>
 
-        // quick-actions
+        {/* quick-actions */}
 
         <div className="quick-actions">
 
