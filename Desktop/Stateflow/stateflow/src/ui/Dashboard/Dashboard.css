@@ -46,6 +46,11 @@
   padding: 25px;
   min-height: 180px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* bottom dashboard layout */
@@ -94,4 +99,35 @@
 
 .quick-actions button:hover {
   background: #1D4ED8;
+}
+
+.dashboard h1 {
+  font-size: 2rem;
+  color: #5A4638;
+}
+
+/*  headings....sections */
+.chart-card h2,
+.recent-tasks h2,
+.quick-actions h2 {
+  margin-bottom: 15px;
+  color: #5A4638;
+  font-size: 1.2rem;
+}
+
+/*  smaller screens */
+@media (max-width: 1000px) {
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+
 }
