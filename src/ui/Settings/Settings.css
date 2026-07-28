@@ -1,0 +1,54 @@
+/* main page */
+.settings {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/*settings card */
+.settings-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* heading */
+.settings-card h2 {
+  margin-bottom: 20px;
+}
+
+/* labels */
+.settings-card label {
+  display: block;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.settings-card input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+/* dropdown */
+.settings-card select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  margin-top: 10px;
+}
+
+/* Save */
+.settings-card button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  background: #D98F7A;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.settings-card button:hover {
+  opacity: 0.9;
+}

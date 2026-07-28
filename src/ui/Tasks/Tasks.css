@@ -1,0 +1,38 @@
+.tasks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tasks h1 {
+  color: #5A4638;
+}
+
+/* header*/
+.tasks-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* add task button */
+.add-task-btn {
+  padding: 12px 20px;
+
+  border: none;
+  border-radius: 10px;
+
+  background-color: #E8B7A8;
+  color: #5A4638;
+
+  font-size: 1rem;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.add-task-btn:hover {
+  background-color: #DFA18E;
+}

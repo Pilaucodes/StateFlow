@@ -1,0 +1,60 @@
+/* layout */
+.focus-mode {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* timer */
+.timer-card {
+  background: white;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* timer display */
+.timer-card h1 {
+  font-size: 4rem;
+  margin: 30px 0;
+  color: #D98F7A;
+}
+
+/* timer buttons */
+.timer-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* buttons */
+.timer-buttons button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 10px;
+  background: #D98F7A;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.timer-buttons button:hover {
+  opacity: 0.9;
+}
+
+/* statistics */
+.focus-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* statistic card */
+.focus-stat-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}

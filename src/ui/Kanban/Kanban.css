@@ -1,0 +1,22 @@
+/* main display page */
+.kanban {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* holds all 3 columns */
+.kanban-columns {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* individual Kanban column */
+.kanban-column {
+  background: white;
+  border-radius: 15px;
+  padding: 20px;
+  min-height: 450px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}

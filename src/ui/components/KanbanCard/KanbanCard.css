@@ -1,0 +1,31 @@
+/* kanban task card */
+.kanban-card {
+  background: #FFF8F4;
+  border-left: 6px solid #D98F7A;
+  border-radius: 12px;
+  padding: 15px;
+  margin-top: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  transition: 0.2s;
+}
+
+.kanban-card:hover {
+  transform: translateY(-3px);
+}
+
+/* task title */
+.kanban-card h3 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* priority text */
+.kanban-card p {
+  color: #666;
+}
+
+.kanban-column h2 {
+  margin-bottom: 20px;
+  text-align: center;
+  color: #7A4E48;
+}

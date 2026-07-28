@@ -1,0 +1,185 @@
+/* dashboard */
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* grid layout css for statistic cards */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* individual statistic card */
+.stat-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* stat-value */
+.stat-card h3 {
+  font-size: 2rem;
+  color: #2563EB;
+}
+
+/* stat title */
+.stat-card p {
+  margin-top: 10px;
+  color: #666;
+}
+
+/* chart */
+.dashboard-charts {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+/* chart placeholder */
+.chart-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  min-height: 180px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* bottom dashboard layout */
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+/* Recent tasks and quick actions cards */
+.recent-tasks,
+.quick-actions {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+
+.recent-tasks ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 15px;
+}
+
+
+.recent-tasks li {
+  padding: 10px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+/* quick action buttons */
+.quick-actions button {
+  width: 100%;
+  margin-top: 15px;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #2563EB;
+  color: white;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: 0.2s;
+}
+
+
+.quick-actions button:hover {
+  background: #1D4ED8;
+}
+
+.dashboard h1 {
+  font-size: 2rem;
+  color: #5A4638;
+}
+
+/*  headings....sections */
+.chart-card h2,
+.recent-tasks h2,
+.quick-actions h2 {
+  margin-bottom: 15px;
+  color: #5A4638;
+  font-size: 1.2rem;
+}
+
+/*  smaller screens */
+@media (max-width: 1000px) {
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* tablets and ipads*/
+@media (max-width: 992px) {
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .dashboard-charts {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+/* mobile phones */
+@media (max-width: 768px) {
+
+  .dashboard {
+    padding: 20px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-actions button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+}
+
+.progress-bar {
+  width: 100%;
+  height: 15px;
+  background: #eee;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 15px;
+}
+
+
+.progress-fill {
+  height: 100%;
+  background: #2563EB;
+  border-radius: 10px;
+  transition: width 0.4s ease;
+}
