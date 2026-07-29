@@ -1,16 +1,54 @@
 import "./Settings.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 // settings page
 function Settings() {
+
   //whether reminders are enabled
 const [reminders, setReminders] = useState(false);
 
-//  selected focus session length
+// selected focus session length
 const [sessionLength, setSessionLength] = useState("25 minutes");
 
 // settings saved
 const [saved, setSaved] = useState(false);
+
+
+// loads saved settings when page opens
+useEffect(() => {
+
+  const savedSettings = localStorage.getItem("settings");
+
+  if (savedSettings) {
+
+    const settings = JSON.parse(savedSettings);
+
+    setReminders(settings.reminders);
+
+    setSessionLength(settings.sessionLength);
+
+  }
+
+}, []);
+
+
+// saves settings to local storage
+function saveSettings() {
+
+  const settings = {
+    reminders,
+    sessionLength,
+  };
+
+  localStorage.setItem(
+    "settings",
+    JSON.stringify(settings)
+  );
+
+  setSaved(true);
+
+}
+
 
   return (
     <div className="settings">
@@ -24,16 +62,18 @@ const [saved, setSaved] = useState(false);
 
         <label>
           <input
-  type="checkbox"
-  checked={reminders}
-  onChange={(event) =>
-    setReminders(event.target.checked)
-  }
-/>
+            type="checkbox"
+            checked={reminders}
+            onChange={(event) =>
+              setReminders(event.target.checked)
+            }
+          />
+
           Enable reminders
         </label>
 
       </div>
+
 
       {/* focus Mode */}
       <div className="settings-card">
@@ -45,31 +85,35 @@ const [saved, setSaved] = useState(false);
         </label>
 
         <select
-  value={sessionLength}
-  onChange={(event) =>
-    setSessionLength(event.target.value)
-  }
->
+          value={sessionLength}
+          onChange={(event) =>
+            setSessionLength(event.target.value)
+          }
+        >
+
           <option>25 minutes</option>
           <option>30 minutes</option>
           <option>45 minutes</option>
+
         </select>
 
       </div>
+
+
       {/* account */}
       <div className="settings-card">
 
         <h2>Account</h2>
 
-        <button onClick={() => setSaved(true)}>
-  {saved ? "Saved ✓" : "Save Settings"}
-</button>
+        <button onClick={saveSettings}>
+          {saved ? "Saved ✓" : "Save Settings"}
+        </button>
 
-{saved && (
-  <p className="saved-message">
-    Settings saved successfully!
-  </p>
-)}
+        {saved && (
+          <p className="saved-message">
+            Settings saved successfully!
+          </p>
+        )}
 
       </div>
 

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect  } from "react";
 import { Routes, Route } from "react-router-dom";
 import Layout from "./ui/Layout/Layout";
 import Dashboard from "./ui/Dashboard/Dashboard";
@@ -10,7 +10,17 @@ import Settings from "./ui/Settings/Settings";
 
 function App() {
 
-  const [tasks, setTasks] = useState([
+  // stores all tasks in the application
+const [tasks, setTasks] = useState(() => {
+
+  const savedTasks = localStorage.getItem("tasks");
+
+  // loads saved tasks if they exist
+  if (savedTasks) {
+    return JSON.parse(savedTasks);
+  }
+  // default tasks for first app launch
+  return [
     {
       id: 1,
       title: "Finish designing dashboard",
@@ -29,10 +39,39 @@ function App() {
       priority: "Low",
       status: "Completed",
     },
-  ]);
+  ];
 
-  // stores the number of completed focus sessions
-const [focusSessions, setFocusSessions] = useState(0);
+});
+// saves tasks whenever the task list changes
+useEffect(() => {
+
+  localStorage.setItem(
+    "tasks",
+    JSON.stringify(tasks)
+  );
+
+}, [tasks]);
+
+  // stores completed focus session history
+const [focusSessions, setFocusSessions] = useState(() => {
+
+  const savedSessions = localStorage.getItem("focusSessions");
+
+  return savedSessions
+    ? JSON.parse(savedSessions)
+    : [];
+
+});
+
+// saves focus sessions
+useEffect(() => {
+
+  localStorage.setItem(
+    "focusSessions",
+    JSON.stringify(focusSessions)
+  );
+
+}, [focusSessions]);
 
   return (
     <Layout>
@@ -53,10 +92,15 @@ const [focusSessions, setFocusSessions] = useState(0);
           element={<Tasks tasks={tasks} setTasks={setTasks} />}
         />
 
-        <Route
-          path="/kanban"
-          element={<Kanban tasks={tasks} />}
-        />
+        <Route 
+        path="/kanban" 
+        element={
+         <Kanban
+      tasks={tasks}
+      setTasks={setTasks}
+    />
+  }
+/>
 
         <Route
   path="/focus"

@@ -2,8 +2,9 @@ import "./FocusMode.css";
 import { useState, useEffect } from "react";
 
 // displays page
-function FocusMode({focusSessions,setFocusSessions,
-}) {
+function FocusMode({focusSessions,setFocusSessions,}) {
+  // default focus session duration
+const [sessionDuration, setSessionDuration] = useState(25);
 
   // stores number of seconds remaining
 const [timeLeft, setTimeLeft] = useState(25 * 60);
@@ -11,14 +12,73 @@ const [timeLeft, setTimeLeft] = useState(25 * 60);
 // check whether the timer runs
 const [isRunning, setIsRunning] = useState(false);
 // completed Pomodoro sessions
-const [sessionsCompleted, setSessionsCompleted] = useState(0);
+const [sessionsCompleted, setSessionsCompleted] = useState(() => {
+
+  const savedSessions = localStorage.getItem("sessionsCompleted");
+
+  return savedSessions
+    ? Number(savedSessions)
+    : 0;
+
+});
 
 // total focusing minutes spent
-const [totalFocusTime, setTotalFocusTime] = useState(0);
+const [totalFocusTime, setTotalFocusTime] = useState(() => {
+
+  const savedFocusTime = localStorage.getItem("totalFocusTime");
+
+  return savedFocusTime
+    ? Number(savedFocusTime)
+    : 0;
+
+});
+
+// loads saved focus settings
+useEffect(() => {
+
+  const savedSettings = localStorage.getItem("settings");
+
+  if (savedSettings) {
+
+    const settings = JSON.parse(savedSettings);
+
+    const minutes = parseInt(
+      settings.sessionLength
+    );
+
+    setSessionDuration(minutes);
+
+    setTimeLeft(minutes * 60);
+
+  }
+
+}, []);
+
+// saves completed sessions
+useEffect(() => {
+
+  localStorage.setItem(
+    "sessionsCompleted",
+    sessionsCompleted
+  );
+
+}, [sessionsCompleted]);
+
+// saves total focus time
+useEffect(() => {
+
+  localStorage.setItem(
+    "totalFocusTime",
+    totalFocusTime
+  );
+
+}, [totalFocusTime]);
 
 // synces session  with dashboard
 useEffect(() => {
-  setSessionsCompleted(focusSessions);
+
+  setSessionsCompleted(focusSessions.length);
+
 }, [focusSessions]);
 
   // converts seconds into minutes and seconds
@@ -42,22 +102,34 @@ useEffect(() => {
   // increases completed sessions
 setSessionsCompleted((previous) => previous + 1);
 
-// updates dashboard session counter
-setFocusSessions((previous) => previous + 1);
+// stores completed focus session
+setFocusSessions((previous) => [
+  ...previous,
+  {
+    id: Date.now(),
+    date: new Date().toISOString(),
+    duration: sessionDuration,
+  },
+]);
 
 // adds completed focus time
-setTotalFocusTime((previous) => previous + 25);
+setTotalFocusTime(
+  (previous) => previous + sessionDuration
+);
 
     return;
   }
 
   // count down every second
-  const timer = setInterval(() => {
+const timer = setInterval(() => {
 
-    setTimeLeft((previousTime) => previousTime - 1);
+  setTimeLeft((previousTime) =>
+    previousTime > 0
+      ? previousTime - 1
+      : 0
+  );
 
-  }, 1000);
-
+}, 1000);
   // removes the interval before creating a new one
   return () => clearInterval(timer);
 
@@ -100,7 +172,7 @@ setTotalFocusTime((previous) => previous + 25);
   <button
     onClick={() => {
       setIsRunning(false);
-      setTimeLeft(25 * 60);
+      setTimeLeft(sessionDuration * 60);
     }}
   >
     Reset

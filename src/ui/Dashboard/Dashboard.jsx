@@ -3,8 +3,7 @@ import Statistic from "../components/Statistic";
 import { useNavigate } from "react-router-dom";
 
 //displays main dashboard with statistics and other dashboard widgets
-function Dashboard({tasks, focusSessions,
-}) {
+function Dashboard({ tasks, focusSessions }) {
   const navigate = useNavigate();
 
   // calculate statistics
@@ -19,6 +18,43 @@ function Dashboard({tasks, focusSessions,
     totalTasks === 0
       ? 0
       : Math.round((completedTasks / totalTasks) * 100);
+  
+  // calculates focus sessions completed this week
+const sessionsThisWeek = focusSessions.filter((session) => {
+
+  const sessionDate = new Date(session.date);
+
+  const today = new Date();
+
+  const sevenDaysAgo = new Date();
+
+  sevenDaysAgo.setDate(today.getDate() - 7);
+
+  return sessionDate >= sevenDaysAgo;
+
+}).length;
+
+
+// calculates total focus minutes this week
+const focusMinutesThisWeek = focusSessions
+  .filter((session) => {
+
+    const sessionDate = new Date(session.date);
+
+    const today = new Date();
+
+    const sevenDaysAgo = new Date();
+
+    sevenDaysAgo.setDate(today.getDate() - 7);
+
+    return sessionDate >= sevenDaysAgo;
+
+  })
+  .reduce(
+    (total, session) =>
+      total + session.duration,
+    0
+  );
 
   const inProgressTasks = tasks.filter(
     (task) => task.status === "In Progress"
@@ -125,15 +161,15 @@ function Dashboard({tasks, focusSessions,
         {/* focus sessions */}
 <div className="chart-card">
 
-  {/* displays completed focus sessions */}
+  {/* displays weekly focus progress */}
   <h2>Focus Sessions This Week</h2>
 
-  <h3>
-    {focusSessions}
-  </h3>
+  <p>
+    Sessions: {sessionsThisWeek}
+  </p>
 
   <p>
-    Sessions completed
+    Focus Time: {focusMinutesThisWeek} min
   </p>
 
 </div>
