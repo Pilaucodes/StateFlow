@@ -1,16 +1,55 @@
-# React + Vite
+# StateFlow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Stateflow is a focus-oriented task management system designed specifically for software developers which combines lightweight task management with features that boost concentration and critical thinking. It provides task management, a visual Kanban board, a Pomodoro-based focus timer, productivity tracking, application settings, and an AI-powered development assistant.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+Dashboard: to display task statistics, task completion percentage, priority distribution, weekly focus sessions and total focus time.
+Task management: Create, edit, delete and organise software development tasks.
+Kanban board: Visually organise tasks into To do, In progress, and completed columns and update task status.
+Focus Mode: Pomodoro timer with configurable session duration, session tracking and total focus time monitoring.
+Settings: Configure the default focus session duration and notification preferences.
+AI Assistant: AI-powered development assistant for brainstorming ideas, debugging guidance and programming support.
+Local Storage: Automatically saves tasks, settings and focus statistics so data persists after refreshing or reopening the application.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Technologies used
 
-## Expanding the ESLint configuration
+### Frontend
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+React.js
+JavaScript (ES6)
+HTML
+CSS
+React Router
+
+### Storage
+
+Local browser storage
+
+### AI integration
+
+OpenAI API
+
+## Software Required
+
+Node.js
+npm
+Note: I personally used VS code to code.
+
+## How to install
+
+Clone this repository: git clone https://github.com/Pilaucodes/StateFlow.git
+Navigate into the project directory: cd StateFlow
+Install all project dependencies: npm install
+Start the development server:npm run dev
+Open your browser and navigate to: http://localhost:5173
+
+## Dependencies
+
+react
+react-dom
+react-router-dom
+vite
+Openai if AI functionality is enabled
